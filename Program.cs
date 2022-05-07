@@ -1,89 +1,64 @@
 ﻿// See https://aka.ms/new-console-template for more information
-//Tipos numérico(Matemática c#)
+//Como criar uma lista de nomes
+var names = new List<string> { "<Lais>", "Ana", "Felipe" };
+foreach (var Lais in names)
+{
+  Console.WriteLine($"Hello {Lais.ToUpper()}!");
+}
+//tipo List<T> armazena sequências de elementos. Especifique o tipo dos elementos entre os colchetes.
+//eu posso remover(remove) ou adicionar(dd) a list
+Console.WriteLine();
+names.Add("Maria");
+names.Add("Bill");
+names.Remove("Ana");
+foreach (var name in names)
+{
+  Console.WriteLine($"Hello {name.ToUpper()}!");
+}
+////O List<T> também permite fazer referência a itens individuais por List<T>. Acesse itens usando os tokens [ e ]
+Console.WriteLine($"My name is {names[0]}.");
+Console.WriteLine($"I've added {names[2]} and {names[3]} to the list.");
+//os índices começam com 0, portanto, o maior índice válido é uma unidade a menos do que o número de itens na lista.(o item removido não aparece na contagem.)
 
-int a = 18;
-int b = 6;
-int c = 2;
-int d = a + b * c;
-Console.WriteLine(d);
+//Para verificar a quantidade de "pessoas" na list:
+Console.WriteLine($"The list has {names.Count} people in it");
 
-// subtraction
-c = a - b;
-Console.WriteLine(c);
+//Para encontrar o item na lista usa-se index ;
+var index = names.IndexOf("Felipe");
+if (index != -1)
+  Console.WriteLine($"The name {names[index]} is at index {index}");
+  //Talvez você não saiba se um item está na lista, portanto, sempre verifique o índice retornado por IndexOf. Se for -1, o item não foi encontrado.
 
-// multiplication
-c = a * b;
-Console.WriteLine(c);
+  // O Sort método classifica todos os itens na lista em sua ordem normal (em ordem alfabética para cadeias de caracteres).
+  names.Sort();
+foreach (var name in names)
+{
+  Console.WriteLine($"Hello {name.ToUpper()}!");
 
-// division
-c = a / b;
-Console.WriteLine(c);
+  //  Para o próximo assunto tudo acima deve ser apagado para melhor entendimento.
+}
+//Isso cria uma lista de números inteiros e define os primeiros dois inteiros como o valor 1. 
+var fibonacciNumbers = new List<int> {1, 1};
+// A Sequência de Fibonacci, uma sequência de números, começa com dois 1s. Cada número Fibonacci seguinte é encontrado considerando a soma dos dois números anteriores.
+var previous = fibonacciNumbers[fibonacciNumbers.Count - 1];
+var previous2 = fibonacciNumbers[fibonacciNumbers.Count - 2];
 
-//Posso utilizar qualquer operação matemática 
+fibonacciNumbers.Add(previous + previous2);
 
-c = a + b - 12 * 17;
-Console.WriteLine(c);
+foreach(var item in fibonacciNumbers)
+    Console.WriteLine(item);
+  
+  //Desafio
+  //só pega se apagar os anteriores 
+  
+var fibonacciNumbers = new List<int> {1, 1};
 
-//parênteses para delimitar a operação, ou operações, que você quer realizar primeiro. 
-d = (a + b) * c;
-Console.WriteLine(d);
+while (fibonacciNumbers.Count < 20)
+{
+    var previous = fibonacciNumbers[fibonacciNumbers.Count - 1];
+    var previous2 = fibonacciNumbers[fibonacciNumbers.Count - 2];
 
-//decimal
-int e = 7;
-int f = 4;
-int g = 3;
-int h = (e + f) / g;
-Console.WriteLine(h);
-
-
-//Limite do tipo int 
-int max = int.MaxValue;
-int min = int.MinValue;
-Console.WriteLine($"The range of integers is {min} to {max}");
-int what = max + 3;
-Console.WriteLine($"An example of overflow: {what}");
-
-//Tipo double, ex 1
-double i = 5;
-double j = 4;
-double k = 2;
-double l = (i + j) / k;
-Console.WriteLine(l);
-//Função double é semelhante a função int ,representa um número de ponto flutuante de precisão dupla.Precisão dupla é um termo relativo que descreve o número de dígitos binários usados para armazenar o valor.
-
-//Tipo double , ex 2
-double m = 19;
-double n = 23;
-double o = 8;
-double p = (m + n) / o;
-Console.WriteLine(p);
-
-double maxi = double.MaxValue;
-double mini = double.MinValue;
-Console.WriteLine($"The range of double is {mini} to {maxi}");
-//Esses valores são impressos em notação científica
-//Double ex 3
-double third = 1.0 / 3.0;
-Console.WriteLine(third);
-//Desafio pessoal
-double deci = 6.75 / 7.90;
-Console.WriteLine(deci);
-//O tipo decimal tem um intervalo menor, mas precisão maior do que double. 
-//Tipo decimal limite
-decimal minim = decimal.MinValue;
-decimal maxim = decimal.MaxValue;
-Console.WriteLine($"The range of the decimal type is {minim} to {maxim}");
-//Comparação:
-double q = 1.0;
-double r = 3.0;
-Console.WriteLine(q / r);
-
-decimal s = 1.0M;
-decimal t = 3.0M;
-Console.WriteLine(s / t);
-//O sufixo M nos números é o modo como você indica que uma constante deve usar o tipo decimal. Caso contrário, o compilador assumirá o double tipo .
-//desafio pessoal: Calcular a área de um circulo;
-double radius = 2.50;
-double area = Math.PI * radius * 2.50;// radius*radius
-Console.WriteLine(area);
-
+    fibonacciNumbers.Add(previous + previous2);
+}
+foreach(var item in fibonacciNumbers)
+    Console.WriteLine(item);
